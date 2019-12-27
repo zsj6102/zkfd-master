@@ -1,0 +1,177 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.example.jingbin.zkfudou.view.ArcView
+                    android:id="@+id/arcView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:arcHeight="40dp"
+                    app:bgColor="@color/colorPrimary" />
+
+                <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/rl_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/search"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginBottom="18dp">
+
+                        <RelativeLayout
+                            android:layout_width="244dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/search_bg"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/iv_search"
+                                android:layout_width="14.5dp"
+                                android:layout_height="14.5dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:src="@drawable/search_bar" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:layout_toRightOf="@+id/iv_search"
+                                android:text="秋季新品特卖"
+                                android:textColor="@color/color_C7C7C7"
+                                android:textSize="13sp" />
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/iv_qr_code"
+                            android:layout_width="21dp"
+                            android:layout_height="21dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/qr_code_img" />
+
+                        <ImageView
+                            android:layout_width="21dp"
+                            android:layout_height="21dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="24dp"
+                            android:layout_toLeftOf="@+id/iv_qr_code"
+                            android:src="@drawable/scan" />
+                    </RelativeLayout>
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="138dp"
+                        android:layout_below="@+id/search"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@null"
+                        app:indicator_drawable_selected="@drawable/banner_selected"
+                        app:indicator_drawable_unselected="@drawable/banner_unselected"
+                        app:indicator_height="3dp"
+                        app:indicator_margin="5dp"
+                        app:indicator_width="14dp" />
+                </RelativeLayout>
+            </FrameLayout>
+
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/home_go" />
+
+            <include layout="@layout/home_tab" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/color_F5F5F5">
+
+                <ImageView
+                    android:id="@+id/iv_hot"
+                    android:layout_width="70.5dp"
+                    android:layout_height="16dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/home_hot" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="13dp"
+                    android:layout_toRightOf="@+id/iv_hot"
+                    android:text="@string/more"
+                    android:textColor="@color/color_999999"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <me.jingbin.library.ByRecyclerView
+                android:id="@+id/xrv_wan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:scrollbarFadeDuration="1"
+                android:scrollbarSize="4dp"
+                android:scrollbars="vertical"
+                tools:itemCount="5"
+                tools:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/item_layout_hot" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/color_F5F5F5">
+
+                <ImageView
+                    android:id="@+id/iv_like"
+                    android:layout_width="70.5dp"
+                    android:layout_height="16dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/home_like" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="13dp"
+                    android:layout_toRightOf="@+id/iv_like"
+                    android:text="@string/more"
+                    android:textColor="@color/color_999999"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</layout>
