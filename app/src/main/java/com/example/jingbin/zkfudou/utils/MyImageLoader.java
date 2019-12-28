@@ -18,8 +18,6 @@ public class MyImageLoader extends ImageLoader {
 
         Glide.with(imageView.getContext())
                 .load(path)
-
-                .error(R.drawable.ic_avatar_default)
                 .transform(new RoundedCorners( 10))
                 .into(imageView);
 

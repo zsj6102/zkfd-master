@@ -10,7 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.jingbin.zkfudou.R;
-import com.example.jingbin.zkfudou.view.GlideRoundTransform;
+
 
 
 /**
@@ -33,56 +33,8 @@ public class GlideUtil {
     }
 
 
-    /**
-     * 显示随机的图片(每日推荐)
-     *
-     * @param imgNumber 有几张图片要显示,对应默认图
-     * @param imageUrl  显示图片的url
-     * @param imageView 对应图片控件
-     */
-    public static void displayRandom(int imgNumber, String imageUrl, ImageView imageView) {
-        Glide.with(imageView.getContext())
-                .load(imageUrl)
-                .placeholder(getMusicDefaultPic(imgNumber))
-                .error(getMusicDefaultPic(imgNumber))
-                .transition(DrawableTransitionOptions.withCrossFade(1500))
-                .into(imageView);
-    }
 
-    private static int getMusicDefaultPic(int imgNumber) {
-        switch (imgNumber) {
-            case 1:
-                return R.drawable.img_two_bi_one;
-            case 2:
-                return R.drawable.img_four_bi_three;
-            case 3:
-                return R.drawable.img_one_bi_one;
-            case 4:
-                return R.drawable.shape_bg_loading;
-            default:
-                break;
-        }
-        return R.drawable.img_four_bi_three;
-    }
 
-//--------------------------------------
-
-    /**
-     * 用于干货item，将gif图转换为静态图
-     */
-    public static void displayGif(String url, ImageView imageView) {
-
-        Glide.with(imageView.getContext())
-                .asBitmap()
-                .load(url)
-                .placeholder(R.drawable.shape_bg_loading)
-                .error(R.drawable.shape_bg_loading)
-//                .skipMemoryCache(true) //跳过内存缓存
-//                .crossFade(1000)
-//                .diskCacheStrategy(DiskCacheStrategy.SOURCE)// 缓存图片源文件（解决加载gif内存溢出问题）
-//                .into(new GlideDrawableImageViewTarget(imageView, 1));
-                .into(imageView);
-    }
 
     /**
      * 书籍、妹子图、电影列表图
@@ -96,27 +48,10 @@ public class GlideUtil {
         Glide.with(imageView.getContext())
                 .load(url)
                 .transition(DrawableTransitionOptions.withCrossFade(500))
-                .placeholder(getDefaultPic(type))
-                .error(getDefaultPic(type))
-
                 .into(imageView);
     }
 
-    private static int getDefaultPic(int type) {
-        switch (type) {
-            case 0:// 电影
-                return R.drawable.img_default_movie;
-            case 1:// 妹子
-                return R.drawable.img_default_meizi;
-            case 2:// 书籍
-                return R.drawable.img_default_book;
-            case 3:
-                return R.drawable.shape_bg_loading;
-            default:
-                break;
-        }
-        return R.drawable.img_default_meizi;
-    }
+
 
     /**
      * 显示高斯模糊效果（电影详情页）
@@ -126,8 +61,6 @@ public class GlideUtil {
         Glide.with(context)
                 .load(url)
                 .transition(DrawableTransitionOptions.withCrossFade())
-                .error(R.drawable.stackblur_default)
-                .placeholder(R.drawable.stackblur_default)
                 .transition(DrawableTransitionOptions.withCrossFade(500))
                 .into(imageView);
     }
@@ -140,13 +73,13 @@ public class GlideUtil {
         Glide.with(imageView.getContext())
                 .load(imageUrl)
                 .transition(DrawableTransitionOptions.withCrossFade(500))
-                .error(R.drawable.ic_avatar_default)
                 .transform(new CircleCrop())
 //                .apply(bitmapTransform(new CircleCrop()))
 //                .transform(new GlideCircleTransform())
 //                .transform(new RoundedCorners(20))
 //                .transform(new CenterCrop(), new RoundedCorners(20))
                 .into(imageView);
+
     }
 
     /**
@@ -168,7 +101,6 @@ public class GlideUtil {
         Glide.with(imageView.getContext())
                 .load(url)
                 .transition(DrawableTransitionOptions.withCrossFade(500))
-                .error(getDefaultPic(3))
                 .into(imageView);
     }
     @BindingAdapter("android:showRoundImg")
@@ -178,7 +110,13 @@ public class GlideUtil {
                 .transform(new RoundedCorners( 10))
                 .into(imageView);
     }
-
+    @BindingAdapter("android:showTopRoundImg")
+    public static void showTopRoundImg(ImageView imageView,String url){
+        Glide.with(imageView.getContext())
+                .load(url)
+                .apply(RequestOptions.bitmapTransform(new RoundCorner(imageView.getContext(),10,10,0,0)))
+                .into(imageView);
+    }
     /**
      * 电影列表图片
      */
@@ -188,8 +126,6 @@ public class GlideUtil {
                 .load(url)
                 .transition(DrawableTransitionOptions.withCrossFade(500))
                 .override((int) CommonUtils.getDimens(R.dimen.movie_detail_width), (int) CommonUtils.getDimens(R.dimen.movie_detail_height))
-                .placeholder(getDefaultPic(0))
-                .error(getDefaultPic(0))
                 .into(imageView);
     }
 
@@ -202,8 +138,6 @@ public class GlideUtil {
                 .load(url)
                 .transition(DrawableTransitionOptions.withCrossFade(500))
                 .override((int) CommonUtils.getDimens(R.dimen.book_detail_width), (int) CommonUtils.getDimens(R.dimen.book_detail_height))
-                .placeholder(getDefaultPic(2))
-                .error(getDefaultPic(2))
                 .into(imageView);
     }
 
@@ -223,8 +157,6 @@ public class GlideUtil {
     public static void displayRandom(ImageView imageView, int imageUrl, int imgType) {
         Glide.with(imageView.getContext())
                 .load(imageUrl)
-                .placeholder(getMusicDefaultPic(imgType))
-                .error(getMusicDefaultPic(imgType))
                 .transition(DrawableTransitionOptions.withCrossFade(1500))
                 .into(imageView);
     }
@@ -238,9 +170,7 @@ public class GlideUtil {
                 .load(url)
                 .override(DensityUtil.dip2px(imageView.getContext(), imageWidthDp), DensityUtil.dip2px(imageView.getContext(), imageHeightDp))
                 .transition(DrawableTransitionOptions.withCrossFade(500))
-                .placeholder(getMusicDefaultPic(4))
                 .centerCrop()
-                .error(getDefaultPic(0))
                 .into(imageView);
     }
 }

@@ -22,6 +22,7 @@
                     android:id="@+id/arcView"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
+                    android:paddingTop="@dimen/statusbar_view_height"
                     app:arcHeight="40dp"
                     app:bgColor="@color/colorPrimary" />
 
@@ -33,15 +34,15 @@
                     <RelativeLayout
                         android:id="@+id/search"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="66dp"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginTop="18dp"
-                        android:layout_marginRight="24dp"
-                        android:layout_marginBottom="18dp">
+                        android:layout_marginTop="@dimen/statusbar_view_height"
+                        android:layout_marginRight="24dp">
 
                         <RelativeLayout
                             android:layout_width="244dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
                             android:background="@drawable/search_bg"
                             android:orientation="horizontal">
 
@@ -98,7 +99,6 @@
             </FrameLayout>
 
             <ImageView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -137,13 +137,9 @@
                 android:id="@+id/xrv_wan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:scrollbarFadeDuration="1"
-                android:scrollbarSize="4dp"
-                android:scrollbars="vertical"
-                tools:itemCount="5"
-                tools:layoutManager="LinearLayoutManager"
-                tools:listitem="@layout/item_layout_hot" />
+                android:layout_marginTop="15dp"
+                android:nestedScrollingEnabled="false"
+                android:scrollbars="none" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -168,9 +164,20 @@
                     android:textSize="12sp" />
             </RelativeLayout>
 
-            <android.support.v7.widget.RecyclerView
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:background="@color/color_F5F5F5">
+                <me.jingbin.library.ByRecyclerView
+                    android:id="@+id/xrv_like"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false"
+                    android:scrollbars="none" />
+            </RelativeLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

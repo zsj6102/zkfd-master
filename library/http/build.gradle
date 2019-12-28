@@ -41,4 +41,8 @@ dependencies {
     api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     // add cookie
     implementation files('libs/commons-lang-2.6.jar')
+
+}
+repositories {
+    mavenCentral()
 }

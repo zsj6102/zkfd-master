@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import com.example.jingbin.zkfudou.R;
 import com.example.jingbin.zkfudou.base.binding.BaseBindingAdapter;
-import com.example.jingbin.zkfudou.bean.wanandroid.DataBean;
+import com.example.jingbin.zkfudou.bean.home.DataBean;
 import com.example.jingbin.zkfudou.databinding.ItemLayoutHotBinding;
 
 public class HomeHotAdapter extends BaseBindingAdapter<DataBean, ItemLayoutHotBinding> {
@@ -18,10 +18,10 @@ public class HomeHotAdapter extends BaseBindingAdapter<DataBean, ItemLayoutHotBi
 
     @Override
     protected void bindView(DataBean bean, ItemLayoutHotBinding binding, int position) {
-//         if(bean!=null){
-//             binding.setBean(bean);
-//             binding.setAdapter(HomeHotAdapter.this);
-//         }
+         if(bean!=null){
+             binding.setBean(bean);
+             binding.setAdapter(HomeHotAdapter.this);
+         }
     }
     public void openDetail(DataBean bean) {
 

@@ -7,11 +7,11 @@
 
         <variable
             name="adapter"
-            type="com.example.jingbin.zkfudou.adapter.TreeAdapter" />
+            type="com.example.jingbin.zkfudou.adapter.HomeHotAdapter" />
 
         <variable
             name="bean"
-            type="com.example.jingbin.zkfudou.bean.wanandroid.DataBean" />
+            type="com.example.jingbin.zkfudou.bean.home.DataBean" />
         <import type="android.text.Html" />
     </data>
 

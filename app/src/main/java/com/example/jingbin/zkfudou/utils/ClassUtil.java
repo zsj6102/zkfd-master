@@ -2,7 +2,7 @@ package com.example.jingbin.zkfudou.utils;
 
 import android.arch.lifecycle.AndroidViewModel;
 
-import com.example.jingbin.zkfudou.viewmodel.menu.NoViewModel;
+import com.example.jingbin.zkfudou.viewmodel.NoViewModel;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

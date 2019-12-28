@@ -16,8 +16,7 @@ import android.widget.RelativeLayout;
 public class ToolbarHelper {
 
     public static void initTranslucent(Activity activity) {
-        StatusBarUtil.setTranslucentStatus(activity);
-        StatusBarUtil.setLightMode(activity);
+
     }
 
     /**

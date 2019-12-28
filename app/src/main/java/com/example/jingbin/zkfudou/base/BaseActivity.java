@@ -9,9 +9,9 @@ import android.databinding.ViewDataBinding;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
-import android.support.v7.app.ActionBar;
+
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +23,8 @@ import com.example.jingbin.zkfudou.R;
 import com.example.jingbin.zkfudou.databinding.ActivityBaseBinding;
 import com.example.jingbin.zkfudou.utils.ClassUtil;
 import com.example.jingbin.zkfudou.utils.CommonUtils;
-import com.example.jingbin.zkfudou.view.statusbar.StatusBarUtil;
+import com.example.jingbin.zkfudou.utils.StatusBarUtil;
+
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -76,7 +77,7 @@ public abstract class BaseActivity<VM extends AndroidViewModel, SV extends ViewD
             mAnimationDrawable.start();
         }
 
-        setToolBar(mBaseBinding.toolBar);
+
         bindingView.getRoot().setVisibility(View.GONE);
         initStatusBar();
         initViewModel();
@@ -95,35 +96,6 @@ public abstract class BaseActivity<VM extends AndroidViewModel, SV extends ViewD
         if (viewModelClass != null) {
             this.viewModel = ViewModelProviders.of(this).get(viewModelClass);
         }
-    }
-
-    /**
-     * 设置titlebar
-     */
-    protected void setToolBar(Toolbar toolbar) {
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            //去除默认Title显示
-            actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.drawable.icon_back);
-        }
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                supportFinishAfterTransition();
-            }
-        });
-    }
-
-    @Override
-    public void setTitle(CharSequence text) {
-        mBaseBinding.toolBar.setTitle(text);
-    }
-
-    public void setNoTitle() {
-        mBaseBinding.toolBar.setVisibility(View.GONE);
     }
 
     protected void showLoading() {
